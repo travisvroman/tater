@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:#444;
+    background: #ccc;
+    margin: 0;
+    padding: 0;
+}
+
+a, a:visited, a:active {
+    text-decoration: none;
+    color:#F5CE85;
+    text-shadow: 1px 1px 0px #967A44,
+    -1px 1px 0px #967A44,
+    1px -1px 0px #967A44,
+    -1px -1px 0px #967A44;
+}
+a:hover {
+    color:#F6DF96;
+}

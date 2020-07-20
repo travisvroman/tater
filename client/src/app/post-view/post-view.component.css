@@ -1,0 +1,15 @@
+.link-button {
+    display:inline-block;
+    background:#F5CE85;
+    color:#967A44;
+    font-weight: bold;
+    padding: 5px 10px;
+    border:2px solid #967A44;
+    margin:10px;
+    border-radius: 3px;
+    text-shadow: none;
+}
+
+.link-button:hover { 
+    background:#F6DF96;
+}

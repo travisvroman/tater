@@ -1,0 +1,23 @@
+<h2>Edit Post</h2>
+<div *ngIf="post">
+<form (ngSubmit)="onSubmit()" #editForm="ngForm">
+    <div>
+        <label for="title">Title:</label><br />
+        <input type="text" id="title" required [(ngModel)]="post.title" name="title" placeholder="Title" class="edit-title" />
+    </div>
+    <div>
+        <label for="content">Content:</label><br />
+        <textarea [(ngModel)]="post.content" name="content" class="edit-content"></textarea>
+    </div>
+    <div>
+        <label for="published">Published:</label>
+        <input type="checkbox" [(ngModel)]="post.published" name="published" />
+    </div>
+    <div>
+        <button type="submit">Save</button>
+    </div>
+
+</form>
+</div>
+
+<a routerLink="">Back to Home</a>
