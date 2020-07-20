@@ -6,15 +6,27 @@ import bodyParser from "body-parser";
 
 // Enable CORS.
 import cors from "cors";
-import { DBIO } from "./app/models";
 import { PostRouter } from "./app/routes/post.routes";
+import { IDataProvider, ErrorInfo } from "./app/DAL/IDataProvider";
+import { MongooseDataProvider } from "./app/DAL/MongooseDataProvider";
 
+/**
+ * Represents the application which serves requests to the front-end.
+ */
 export class TaterServer {
-    private static app = express();
 
+    // Start up express.
+    private static app = express();
+    private static dataProvider: IDataProvider;
+
+    /**
+     * Kick off the server and begin listening.
+     */
     public static Start(): void {
         var corsOptions = {
-            origin: "http://localhost:8081"
+
+            // The location of the site.
+            origin: "http://localhost:4200"
         }
 
         // Middleware: CORS support
@@ -26,8 +38,18 @@ export class TaterServer {
         // Parse requests of application type application/x-www-form-urlencoded
         TaterServer.app.use( bodyParser.urlencoded( { extended: true } ) );
 
-        // Connect to the database
-        DBIO.Initialize( "mongodb://localhost:27017/tater_db" );
+        // Connect to the database. TODO: figure out which one to use based on config.
+        TaterServer.dataProvider = new MongooseDataProvider();
+        TaterServer.dataProvider.Connect(
+            "mongodb://localhost:27017/tater_db",
+            () => {
+                console.log( "Connected to database!" );
+            },
+            ( error: ErrorInfo ) => {
+                console.error( "Failed to connect to database!", error );
+                process.exit();
+            }
+        );
 
         // Routes:
         // /api/posts: GET, POST, DELETE
@@ -35,7 +57,7 @@ export class TaterServer {
         // /apt/posts/published: GET
 
         // Routes
-        PostRouter.Initialize( TaterServer.app );
+        PostRouter.Initialize( TaterServer.app, TaterServer.dataProvider );
 
         // Set port, listen for requests.
         const PORT = process.env.PORT || 8080;
@@ -45,4 +67,5 @@ export class TaterServer {
     }
 }
 
+// Start off the server.
 TaterServer.Start();

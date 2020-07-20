@@ -1,14 +1,26 @@
 import express, { Router } from "express";
 import "../controllers/post.controller"
 import { PostController } from "../controllers/post.controller";
+import { IDataProvider } from "../DAL/IDataProvider";
 
+/**
+ * A router to handle posts in the system.
+ */
 export class PostRouter {
 
+    // The express router.
     private static router: Router;
+
+    // The internally used post controller.
     private static controller: PostController;
 
-    public static Initialize( app: express.Express ) {
-        PostRouter.controller = new PostController();
+    /**
+     * Initializes this router using the provided DataProvider, and feeds back to the application.
+     * @param app The application
+     * @param dataProvider The data provider
+     */
+    public static Initialize( app: express.Express, dataProvider: IDataProvider ): void {
+        PostRouter.controller = new PostController( dataProvider );
 
         PostRouter.router = express.Router();
 
@@ -30,9 +42,7 @@ export class PostRouter {
         // Delete by id
         PostRouter.router.delete( "/:id", PostRouter.controller.delete.bind( PostRouter.controller ) );
 
-        // Delete all posts
-        PostRouter.router.delete( "/", PostRouter.controller.deleteAll.bind( PostRouter.controller ) );
-
+        // Tell the app to use this router.
         app.use( "/api/posts", PostRouter.router );
     }
 };

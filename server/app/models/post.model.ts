@@ -1,36 +1,33 @@
-/*
 
-module.exports = mongoose => {
-    var schema = mongoose.Schema(
-        {
-            title: String,
-            description: String,
-            published: Boolean
-        },
-        {
-            timestamps: true
-        }
-    );
-
-    schema.method( "toJSON", function () {
-        const { __v, _id, ...object } = this.toObject();
-        object.id = _id;
-        return object;
-    } );
-
-    const post = mongoose.model( "post", schema );
-    return post;
-}*/
-
-
+/**
+ * Represents a single post in the system.
+ */
 export class Post {
+    /**
+     * The title of the post.
+     */
     public title: string;
-    public description: string;
+
+    /**
+     * The content of the post.
+     */
+    public content: string;
+
+    /**
+     * Indicates if the post has been published.
+     */
     public published: boolean;
 
-    public constructor( title: string, description: string, published: boolean ) {
+    /**
+     * Creates a new post object.
+     * 
+     * @param title The title of the post.
+     * @param content The content of the post.
+     * @param published Indicates if the post has been published.
+     */
+    public constructor( title: string, content: string, published: boolean ) {
         this.title = title;
-        this.description = description;
+        this.content = content;
         this.published = published;
     }
 }

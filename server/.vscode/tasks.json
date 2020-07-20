@@ -7,9 +7,12 @@
 			"problemMatcher": [
 				"$tsc"
 			],
-			"group": "build",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
 			"label": "npm: build",
-			"detail": "node ./node_modules/typescript/bin/tsc"
+			"detail": "node ./node_modules/typescript/bin/tsc",
 		}
 	]
 }
