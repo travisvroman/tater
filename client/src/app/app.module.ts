@@ -1,16 +1,16 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
-import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+import { RouterModule } from "@angular/router";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { PostHomeComponent } from './post-home/post-home.component';
-import { PostViewComponent } from './post-view/post-view.component';
-import { PostCreateComponent } from './post-create/post-create.component';
-import { PostEditComponent } from './post-edit/post-edit.component';
-import { PostContentPipe } from './post-content.pipe';
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { PostHomeComponent } from "./post-home/post-home.component";
+import { PostViewComponent } from "./post-view/post-view.component";
+import { PostCreateComponent } from "./post-create/post-create.component";
+import { PostEditComponent } from "./post-edit/post-edit.component";
+import { PostContentPipe } from "./post-content.pipe";
 
 /**
  * The main app module.

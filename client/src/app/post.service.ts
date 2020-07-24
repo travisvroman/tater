@@ -1,21 +1,20 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from 'rxjs';
+import { Observable } from "rxjs";
 
-import { Post } from "../post"
+import { Post } from "../post";
 
 /**
  * The service used for CRUD operations on posts.
  */
 @Injectable( {
-  providedIn: 'root'
+  providedIn: "root"
 } )
 export class PostService {
   private http: HttpClient;
 
   /**
    * Creates a new PostService.
-   * 
    * @param http The HTTP client used by this service to create requests top the server.
    */
   public constructor( http: HttpClient ) {
@@ -31,9 +30,7 @@ export class PostService {
 
   /**
    * Obtains a list of all posts which contain the text in title.
-   * 
    * @param text The text to search for.
-   * 
    * @returns An Observable with a collection of posts.
    */
   public getAllPostsWithTitle( text: string ): Observable<Post[]> {
@@ -42,9 +39,7 @@ export class PostService {
 
   /**
    * Attempts to get a post by the supplied identifier.
-   * 
    * @param id The post id to search for.
-   * 
    * Returns an observable of the post object.
    */
   public getPostById( id: string ): Observable<Post> {
@@ -53,19 +48,17 @@ export class PostService {
 
   /**
    * Creates a new post with the supplied object.
-   * 
    * @param post The post to be created.
    */
-  public createPost( post: Post ): void {
-    this.http.post( "http://localhost:8080/api/posts", post ).subscribe();
+  public createPost( post: Post ): Observable<Post> {
+    return this.http.post<Post>( "http://localhost:8080/api/posts", post );
   }
 
   /**
    * Updates the given post.
-   * 
    * @param post The post to be updated.
    */
-  public updatePost( post: Post ): void {
-    this.http.put( "http://localhost:8080/api/posts/" + post._id, post ).subscribe();
+  public updatePost( post: Post ): Observable<Post> {
+    return this.http.put<Post>( "http://localhost:8080/api/posts/" + post._id, post );
   }
 }

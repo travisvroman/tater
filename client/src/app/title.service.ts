@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 /**
  * A simple service responsible for updating the page title from
  * anywhere within the application.
  */
 @Injectable( {
-  providedIn: 'root'
+  providedIn: "root"
 } )
 export class TitleService {
 
@@ -17,7 +17,6 @@ export class TitleService {
 
   /**
    * Sets the page title.
-   * 
    * @param title The title to be set.
    */
   public setTitle( title: string ): void {

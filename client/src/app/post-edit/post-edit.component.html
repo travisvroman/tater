@@ -7,11 +7,11 @@
     </div>
     <div>
         <label for="content">Content:</label><br />
-        <textarea [(ngModel)]="post.content" name="content" class="edit-content"></textarea>
+        <textarea [(ngModel)]="post.content" id="content" name="content" class="edit-content"></textarea>
     </div>
     <div>
         <label for="published">Published:</label>
-        <input type="checkbox" [(ngModel)]="post.published" name="published" />
+        <input type="checkbox" [(ngModel)]="post.published" id="published" name="published" />
     </div>
     <div>
         <button type="submit">Save</button>

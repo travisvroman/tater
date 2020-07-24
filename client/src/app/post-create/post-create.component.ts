@@ -1,15 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { PostService } from '../post.service';
-import { Location } from '@angular/common'
-import { Post } from 'src/post';
+import { Component, OnInit, Input } from "@angular/core";
+import { PostService } from "../post.service";
+import { Location } from "@angular/common";
+import { Post } from "src/post";
 
 /**
  * Component used for creating new posts.
  */
 @Component( {
-  selector: 'app-post-create',
-  templateUrl: './post-create.component.html',
-  styleUrls: ['./post-create.component.css']
+  selector: "app-post-create",
+  templateUrl: "./post-create.component.html",
+  styleUrls: ["./post-create.component.css"]
 } )
 export class PostCreateComponent implements OnInit {
 
@@ -24,7 +24,6 @@ export class PostCreateComponent implements OnInit {
 
   /**
    * Creates a new PostCreateComponent.
-   * 
    * @param postService The post service to be used.
    * @param location The location of this page.
    */
@@ -49,7 +48,7 @@ export class PostCreateComponent implements OnInit {
   /**
    * Go back to the previous page.
    */
-  public goBack() {
+  public goBack(): void {
     this.location.back();
   }
 
@@ -57,7 +56,7 @@ export class PostCreateComponent implements OnInit {
    * Invoked when the form is submitted. Copies post to
    * post service and navigates the page back to where it was before.
    */
-  public onSubmit() {
+  public onSubmit(): void {
     this.postService.createPost( this.post );
     this.goBack();
   }

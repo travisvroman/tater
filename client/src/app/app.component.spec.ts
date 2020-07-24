@@ -1,35 +1,47 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { AppComponent } from './app.component';
+import { TestBed, async } from "@angular/core/testing";
+import { RouterTestingModule } from "@angular/router/testing";
+import { AppComponent } from "./app.component";
 
-describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+/**
+ * Tests for the outer application component.
+ */
+describe( "AppComponent", () => {
+  beforeEach( async( () => {
+    TestBed.configureTestingModule( {
       imports: [
         RouterTestingModule
       ],
       declarations: [
         AppComponent
       ],
-    }).compileComponents();
-  }));
+    } ).compileComponents();
+  } ) );
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  /**
+   * Successful creation.
+   */
+  it( "should create the app", () => {
+    const fixture = TestBed.createComponent( AppComponent );
     const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+    expect( app ).toBeTruthy();
+  } );
 
-  it(`should have as title 'tater'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  /**
+   * Check that the title is correct.
+   */
+  it( `should have as title "TATER"`, () => {
+    const fixture = TestBed.createComponent( AppComponent );
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('tater');
-  });
+    expect( app.title ).toEqual( "TATER" );
+  } );
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  /**
+   * Check that the title renders.
+   */
+  it( "should render title", () => {
+    const fixture = TestBed.createComponent( AppComponent );
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('tater app is running!');
-  });
-});
+    expect( compiled.querySelector( "#titleText" ).textContent ).toContain( "TATER" );
+  } );
+} );
