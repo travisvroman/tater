@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaterAPI", "TaterAPI\TaterAPI.csproj", "{7F77D87C-866E-4B92-AE8B-9E87F0637FC4}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Tater_DB", "Tater_DB\Tater_DB.sqlproj", "{068F6100-3873-4269-8392-3141B23798BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaterAPI.Tests", "TaterAPI.Tests\TaterAPI.Tests.csproj", "{658BF635-9316-40A1-AAE4-E90EE4CC6D49}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F77D87C-866E-4B92-AE8B-9E87F0637FC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F77D87C-866E-4B92-AE8B-9E87F0637FC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F77D87C-866E-4B92-AE8B-9E87F0637FC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F77D87C-866E-4B92-AE8B-9E87F0637FC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{068F6100-3873-4269-8392-3141B23798BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{068F6100-3873-4269-8392-3141B23798BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{068F6100-3873-4269-8392-3141B23798BE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{068F6100-3873-4269-8392-3141B23798BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{068F6100-3873-4269-8392-3141B23798BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{068F6100-3873-4269-8392-3141B23798BE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{658BF635-9316-40A1-AAE4-E90EE4CC6D49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{658BF635-9316-40A1-AAE4-E90EE4CC6D49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{658BF635-9316-40A1-AAE4-E90EE4CC6D49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{658BF635-9316-40A1-AAE4-E90EE4CC6D49}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F116DAE-A6E3-4426-AB52-DA93222CCC71}
+	EndGlobalSection
+EndGlobal

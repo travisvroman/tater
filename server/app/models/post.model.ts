@@ -20,7 +20,6 @@ export class Post {
 
     /**
      * Creates a new post object.
-     * 
      * @param title The title of the post.
      * @param content The content of the post.
      * @param published Indicates if the post has been published.

@@ -1,41 +1,48 @@
 
 #header {
-    margin: 0px 0 15px 0;
+    margin: 0;
+    padding-bottom: 15px;
+    overflow: hidden;
+    border-bottom: 2px solid #CAAC76;
 }
 
 #content { 
     background: white;
     overflow: hidden;
     padding: 10px;
+    box-shadow: 0 5px 20px black
 }
 
 .title-link {
-    color:#F5CE85;
-    text-shadow: 1px 1px 0px #967A44,
-    -1px 1px 0px #967A44,
-    1px -1px 0px #967A44,
-    -1px -1px 0px #967A44;
+    color:white;
+    text-shadow: 1px 1px 1px black;
+    text-decoration: none;
 }
 
 #title {
     margin-bottom: 0;
+    font-size: 50pt;
+    margin-top: 10px;
 }
 
 #subtitle {
     margin-left:20px;
     font-size: 12pt;
-    color:#666;
+    color:white;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
 }
 
 #logo {
-    width:28px;
+    height: 50pt;
     margin-left:20px;
 }
 
 #footer {
-    border-top: solid 1px #666;
     text-align: center;
     padding: 30px 0;
-    background: #ccc;
+    border-top: 2px solid #CAAC76;
+    color:white;
+    text-shadow: 1px 1px 1px black;
     margin: 0;
 }

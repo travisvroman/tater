@@ -3,7 +3,7 @@ import { HttpClientTestingModule, HttpTestingController } from "@angular/common/
 
 import { PostService } from "../post.service";
 import { PostViewComponent } from "./post-view.component";
-import { RouterModule } from '@angular/router';
+import { RouterModule } from "@angular/router";
 
 describe( "PostViewComponent", () => {
   let service: PostService;
@@ -26,7 +26,7 @@ describe( "PostViewComponent", () => {
 
     // Inject services/providers.
     service = TestBed.inject( PostService );
-    httpMock = TestBed.get( HttpTestingController );
+    httpMock = TestBed.inject( HttpTestingController );
   } );
 
   it( "should create", () => {

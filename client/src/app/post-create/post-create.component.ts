@@ -57,7 +57,8 @@ export class PostCreateComponent implements OnInit {
    * post service and navigates the page back to where it was before.
    */
   public onSubmit(): void {
-    this.postService.createPost( this.post );
-    this.goBack();
+    this.postService.createPost( this.post ).subscribe( x => {
+      this.goBack();
+    } );
   }
 }

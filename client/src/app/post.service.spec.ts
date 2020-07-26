@@ -2,7 +2,7 @@ import { TestBed } from "@angular/core/testing";
 import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
 
 import { PostService } from "./post.service";
-import { Post } from 'src/post';
+import { Post } from "src/post";
 
 /**
  * Contains tests for the post service.
@@ -22,36 +22,36 @@ describe( "PostService", () => {
 
     // Inject services/providers
     service = TestBed.inject( PostService );
-    httpMock = TestBed.get( HttpTestingController );
+    httpMock = TestBed.inject( HttpTestingController );
 
     // Setup test post data.
     testPosts = [
       {
-        "published": true,
-        "_id": "5f139a92ab4c7071b426bae2",
-        "title": "My Test Post Title 1",
-        "content": "Test post content 1",
-        "createdAt": "2020-07-19T00:58:01.870Z",
-        "updatedAt": "2020-07-20T01:12:43.390Z",
-        "__v": 0
+        published: true,
+        _id: "5f139a92ab4c7071b426bae2",
+        title: "My Test Post Title 1",
+        content: "Test post content 1",
+        createdAt: "2020-07-19T00:58:01.870Z",
+        updatedAt: "2020-07-20T01:12:43.390Z",
+        __v: 0
       },
       {
-        "published": true,
-        "_id": "5f139b00ab4c7071b426bae3",
-        "title": "Test Post Title 2",
-        "content": "Test post content 2",
-        "createdAt": "2020-07-19T00:59:44.218Z",
-        "updatedAt": "2020-07-20T01:09:31.764Z",
-        "__v": 0
+        published: true,
+        _id: "5f139b00ab4c7071b426bae3",
+        title: "Test Post Title 2",
+        content: "Test post content 2",
+        createdAt: "2020-07-19T00:59:44.218Z",
+        updatedAt: "2020-07-20T01:09:31.764Z",
+        __v: 0
       },
       {
-        "published": false,
-        "_id": "5f139b64ab4c7071b426bae5",
-        "title": "Test Post Title 3",
-        "content": "Test post content 3",
-        "createdAt": "2020-07-19T01:01:24.515Z",
-        "updatedAt": "2020-07-20T01:27:19.974Z",
-        "__v": 0
+        published: false,
+        _id: "5f139b64ab4c7071b426bae5",
+        title: "Test Post Title 3",
+        content: "Test post content 3",
+        createdAt: "2020-07-19T01:01:24.515Z",
+        updatedAt: "2020-07-20T01:27:19.974Z",
+        __v: 0
       },
     ];
   } );
@@ -108,7 +108,7 @@ describe( "PostService", () => {
   /**
    * Obtain all blog posts with titles containing the given string.
    */
-  it( "should get single posts with matching id", () => {
+  it( "should get single post with matching id", () => {
 
     // Id of second post.
     const postId: string = "5f139b00ab4c7071b426bae3";
@@ -147,13 +147,13 @@ describe( "PostService", () => {
 
     // Return an error object.
     request.flush( {
-      "message": "Error retrieving post id: 12345",
-      "innerError": {
-        "stringValue": "\"12345\"",
-        "kind": "ObjectId",
-        "value": "12345",
-        "path": "_id",
-        "reason": {}
+      message: "Error retrieving post id: 12345",
+      innerError: {
+        stringValue: "\"12345\"",
+        kind: "ObjectId",
+        value: "12345",
+        path: "_id",
+        reason: {}
       }
     } );
 
@@ -192,13 +192,13 @@ describe( "PostService", () => {
 
     // Return the value of a newly created post.
     request.flush( {
-      "published": false,
-      "_id": newPostId,
-      "title": newPost.title,
-      "content": newPost.content,
-      "createdAt": "2020-07-24T00:04:24.023Z",
-      "updatedAt": "2020-07-24T00:04:24.023Z",
-      "__v": 0
+      published: false,
+      _id: newPostId,
+      title: newPost.title,
+      content: newPost.content,
+      createdAt: "2020-07-24T00:04:24.023Z",
+      updatedAt: "2020-07-24T00:04:24.023Z",
+      __v: 0
     } );
 
     httpMock.verify();
@@ -233,13 +233,13 @@ describe( "PostService", () => {
 
     // Return the value of a updated post.
     request.flush( {
-      "published": postData.published,
-      "_id": postData._id,
-      "title": postData.title,
-      "content": postData.content,
-      "createdAt": "2020-07-24T00:04:24.023Z",
-      "updatedAt": "2020-07-24T00:04:24.023Z",
-      "__v": 0
+      published: postData.published,
+      _id: postData._id,
+      title: postData.title,
+      content: postData.content,
+      createdAt: "2020-07-24T00:04:24.023Z",
+      updatedAt: "2020-07-24T00:04:24.023Z",
+      __v: 0
     } );
 
     httpMock.verify();

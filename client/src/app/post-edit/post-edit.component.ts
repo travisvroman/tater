@@ -59,7 +59,8 @@ export class PostEditComponent implements OnInit {
    * Invoked on form submission.
    */
   public onSubmit(): void {
-    this.postService.updatePost( this.post );
-    this.goBack();
+    this.postService.updatePost( this.post ).subscribe( x => {
+      this.goBack();
+    } );
   }
 }

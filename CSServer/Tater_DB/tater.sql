@@ -1,0 +1,11 @@
+﻿CREATE USER [tater]
+	FOR LOGIN [tater]
+	WITH DEFAULT_SCHEMA = dbo
+	
+GO
+
+GRANT CONNECT TO [tater]
+GO
+
+GRANT EXECUTE TO [tater]
+GO

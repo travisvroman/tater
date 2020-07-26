@@ -1,5 +1,5 @@
 import { PostContentPipe } from "./post-content.pipe";
-import { pipe } from 'rxjs';
+import { pipe } from "rxjs";
 
 /**
  * Contains basic tests for the post content pipe.

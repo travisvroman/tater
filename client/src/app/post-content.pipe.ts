@@ -11,7 +11,7 @@ import { Pipe, PipeTransform, DefaultIterableDiffer } from "@angular/core";
 export class PostContentPipe implements PipeTransform {
 
   /**
-   * Transforms the given value into HTML text. Used to format raw text stored in 
+   * Transforms the given value into HTML text. Used to format raw text stored in
    * a database into that which is usable by the front end for rendering.
    * @param value The value to be transformed.
    * @return The transformed string.

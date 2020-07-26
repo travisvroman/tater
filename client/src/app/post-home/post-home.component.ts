@@ -39,6 +39,6 @@ export class PostHomeComponent implements OnInit {
     this.postService.getAllPosts().subscribe( ( posts: Post[] ) => {
       this.posts = posts;
       this.titleService.setTitle( "Home | TATER" );
-    } )
+    } );
   }
 }

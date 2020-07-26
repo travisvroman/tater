@@ -23,11 +23,11 @@ export class TaterServer {
      * Kick off the server and begin listening.
      */
     public static Start(): void {
-        var corsOptions = {
+        const corsOptions = {
 
             // The location of the site.
             origin: "http://localhost:4200"
-        }
+        };
 
         // Middleware: CORS support
         TaterServer.app.use( cors( corsOptions ) );

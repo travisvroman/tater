@@ -16,7 +16,6 @@ export interface IDataProvider {
 
     /**
      * Attempts to connect to the provided database.
-     * 
      * @param dsn The Data Source Name of the database (connection string)
      * @param onSuccess Callback made on success. Optional.
      * @param onError Callback made on error. Optional.
@@ -25,7 +24,6 @@ export interface IDataProvider {
 
     /**
      * Attempts to create the passed object in the data layer.
-     * 
      * @param object The object to be created/saved in the data layer.
      * @param onSuccess Callback made on success. Optional.
      * @param onError Callback made on error. Optional.
@@ -34,7 +32,6 @@ export interface IDataProvider {
 
     /**
      * Attempts to read an object or objects from the data layer.
-     * 
      * @param query The query used for object selection.
      * @param onSuccess Callback made on success. Optional.
      * @param onError Callback made on error. Optional.
@@ -51,7 +48,6 @@ export interface IDataProvider {
 
     /**
      * Attempts to delete an object or objects from the data layer using the provided query.
-     * 
      * @param query The query used for object selection.
      * @param onSuccess Callback made on success. Optional.
      * @param onError Callback made on error. Optional.
@@ -69,6 +65,32 @@ export enum DataProviderQueryType {
 
     /** Multiple records */
     FindAll
+}
+
+/**
+ * Used to identify data provider standard query fields.
+ */
+export enum DataProviderQueryField {
+
+    /**
+     * The object type field.
+     */
+    ObjectType = "objType",
+
+    /**
+     * The condition field.
+     */
+    Condition = "condition",
+
+    /**
+     * The ID field.
+     */
+    Id = "id",
+
+    /**
+     * The body of the request.
+     */
+    Body = "body"
 }
 
 /**

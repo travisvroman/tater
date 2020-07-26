@@ -1,13 +1,16 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { PostEditComponent } from "./post-edit.component";
-import { PostService } from '../post.service';
-import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
-import { RouterModule } from '@angular/router';
-import { Post } from 'src/post';
+import { PostService } from "../post.service";
+import { HttpTestingController, HttpClientTestingModule } from "@angular/common/http/testing";
+import { RouterModule } from "@angular/router";
+import { Post } from "src/post";
 import { Router } from "@angular/router";
-import { Location } from '@angular/common';
+import { Location } from "@angular/common";
 
+/**
+ * Tests for the edit component.
+ */
 describe( "PostEditComponent", () => {
   let service: PostService;
   let component: PostEditComponent;
@@ -18,6 +21,9 @@ describe( "PostEditComponent", () => {
 
   let post: Post;
 
+  /**
+   * Prep done before each test (async)
+   */
   beforeEach( async( () => {
     TestBed.configureTestingModule( {
       declarations: [PostEditComponent],
@@ -26,6 +32,9 @@ describe( "PostEditComponent", () => {
       .compileComponents();
   } ) );
 
+  /**
+   * Prep done before each test (sync)
+   */
   beforeEach( () => {
     fixture = TestBed.createComponent( PostEditComponent );
     component = fixture.componentInstance;
@@ -33,18 +42,18 @@ describe( "PostEditComponent", () => {
 
     // Inject services/providers.
     service = TestBed.inject( PostService );
-    httpMock = TestBed.get( HttpTestingController );
+    httpMock = TestBed.inject( HttpTestingController );
 
     // Routing
-    router = TestBed.get( Router );
-    location = TestBed.get( Location );
+    router = TestBed.inject( Router );
+    location = TestBed.inject( Location );
 
     // The test post data to be returned from the mock server.
     post = {
-      "published": true,
-      "_id": "5f139a92ab4c7071b426bae2",
-      "title": "My Test Post Title 1",
-      "content": "Test post content 1",
+      published: true,
+      _id: "5f139a92ab4c7071b426bae2",
+      title: "My Test Post Title 1",
+      content: "Test post content 1",
     };
   } );
 

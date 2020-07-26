@@ -1,7 +1,6 @@
-import express from "express"
+import express from "express";
 import { Post } from "../models/post.model";
-import mongoose from "mongoose";
-import { IDataProvider, DataProviderQuery, DataProviderQueryType, ErrorInfo } from "../DAL/IDataProvider";
+import { IDataProvider, DataProviderQuery, DataProviderQueryType, ErrorInfo, DataProviderQueryField } from "../DAL/IDataProvider";
 
 /**
  * The controller, responsible for manipulating post data.
@@ -47,16 +46,16 @@ export class PostController {
                 } );
             }
         );
-    };
+    }
 
     // Get all posts.
     public findAll( request: express.Request, response: express.Response ): void {
         const title = String( request.query.title );
-        var condition = title ? { title: { $regex: new RegExp( title ), $options: "i" } } : {};
+        const condition = title ? { title: { $regex: new RegExp( title ), $options: "i" } } : {};
 
-        let query = new DataProviderQuery<Post[]>( DataProviderQueryType.FindAll );
-        query.Params["objType"] = "post";
-        query.Params["condition"] = condition;
+        const query = new DataProviderQuery<Post[]>( DataProviderQueryType.FindAll );
+        query.Params[DataProviderQueryField.ObjectType] = "post";
+        query.Params[DataProviderQueryField.Condition] = condition;
 
         // Search data
         this.dataProvider.Read<Post[]>(
@@ -69,14 +68,14 @@ export class PostController {
                 } );
             }
         );
-    };
+    }
 
     // Find post by id.
     public findOne( request: express.Request, response: express.Response ): void {
 
-        let query = new DataProviderQuery<Post>( DataProviderQueryType.FindOne );
-        query.Params["objType"] = "post";
-        query.Params["id"] = request.params.id;
+        const query = new DataProviderQuery<Post>( DataProviderQueryType.FindOne );
+        query.Params[DataProviderQueryField.ObjectType] = "post";
+        query.Params[DataProviderQueryField.Id] = request.params.id;
 
         // Search data
         this.dataProvider.Read<Post>(
@@ -89,7 +88,7 @@ export class PostController {
                 } );
             }
         );
-    };
+    }
 
     // Update post by id.
     public update( request: express.Request, response: express.Response ): void {
@@ -100,10 +99,10 @@ export class PostController {
 
         const id = request.params.id;
 
-        let query = new DataProviderQuery<Post>( DataProviderQueryType.FindOne );
-        query.Params["objType"] = "post";
-        query.Params["id"] = request.params.id;
-        query.Params["body"] = request.body;
+        const query = new DataProviderQuery<Post>( DataProviderQueryType.FindOne );
+        query.Params[DataProviderQueryField.ObjectType] = "post";
+        query.Params[DataProviderQueryField.Id] = request.params.id;
+        query.Params[DataProviderQueryField.Body] = request.body;
 
         // Update data
         this.dataProvider.Update<Post>(
@@ -116,15 +115,15 @@ export class PostController {
                 } );
             }
         );
-    };
+    }
 
     // Delete post by id.
     public delete( request: express.Request, response: express.Response ): void {
         const id = request.params.id;
 
-        let query = new DataProviderQuery<Post>( DataProviderQueryType.FindOne );
-        query.Params["objType"] = "post";
-        query.Params["id"] = request.params.id;
+        const query = new DataProviderQuery<Post>( DataProviderQueryType.FindOne );
+        query.Params[DataProviderQueryField.ObjectType] = "post";
+        query.Params[DataProviderQueryField.Id] = request.params.id;
 
         // Search data
         this.dataProvider.Delete<Post>(
@@ -137,14 +136,14 @@ export class PostController {
                 } );
             }
         );
-    };
+    }
 
     // Find all published posts.
     public findAllPublished( request: express.Request, response: express.Response ): void {
 
-        let query = new DataProviderQuery<Post>( DataProviderQueryType.FindAll );
-        query.Params["objType"] = "post";
-        query.Params["condition"] = { published: true };
+        const query = new DataProviderQuery<Post>( DataProviderQueryType.FindAll );
+        query.Params[DataProviderQueryField.ObjectType] = "post";
+        query.Params[DataProviderQueryField.Condition] = { published: true };
 
         // Search data
         this.dataProvider.Read<Post>(
@@ -157,5 +156,5 @@ export class PostController {
                 } );
             }
         );
-    };
+    }
 }

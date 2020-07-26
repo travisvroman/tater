@@ -1,22 +1,21 @@
 <h2>Create New Post</h2>
 
-<form (ngSubmit)="onSubmit()" #createForm="ngForm">
+<form (ngSubmit)="onSubmit()" #createForm="ngForm" method="POST">
     <div>
-        <label for="title">Title:</label>
-        <input type="text" placeholder="Title" required [(ngModel)]="post.title" name="title" id="title" />
+        <label for="title">Title:</label><br />
+        <input type="text" id="title" placeholder="Title" required [(ngModel)]="post.title" name="title" class="edit-title" />
     </div>
     <div>
-        <label for="content">Content:</label>
-        <textarea [(ngModel)]="post.content" name="content" id="content"></textarea>
+        <label for="content">Content:</label><br />
+        <textarea [(ngModel)]="post.content" name="content" id="content" class="edit-content"></textarea>
     </div>
     <div>
         <label for="published">Published:</label>
-        <input type="checkbox" [(ngModel)]="post.published" name="published" />
+        <input type="checkbox" [(ngModel)]="post.published" id="published" name="published" />
     </div>
     <div>
-        <button type="submit">Create!</button>
+        <button type="submit" class="link-button">Create!</button>&nbsp;
+        <a routerLink="" class="link-button">Back to Home</a>
     </div>
 
 </form>
-
-<a routerLink="">Back to Home</a>

@@ -1,5 +1,5 @@
 import express, { Router } from "express";
-import "../controllers/post.controller"
+import "../controllers/post.controller";
 import { PostController } from "../controllers/post.controller";
 import { IDataProvider } from "../DAL/IDataProvider";
 
@@ -45,4 +45,4 @@ export class PostRouter {
         // Tell the app to use this router.
         app.use( "/api/posts", PostRouter.router );
     }
-};
+}

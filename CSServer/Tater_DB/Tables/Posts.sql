@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[Posts]
+(
+	[Id] VARCHAR(50) NOT NULL PRIMARY KEY, 
+    [Title] NVARCHAR(255) NOT NULL, 
+    [Content] NTEXT NOT NULL , 
+    [Published] BIT NOT NULL DEFAULT 0, 
+    [CreatedAt] DATETIME NOT NULL DEFAULT GETDATE(), 
+    [UpdatedAt] DATETIME NOT NULL DEFAULT GETDATE()
+)

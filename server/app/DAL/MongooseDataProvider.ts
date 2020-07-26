@@ -1,5 +1,6 @@
-import mongoose from "mongoose"
-import { IDataProvider, DataProviderQuery, DataProviderQueryType, ErrorInfo, ErrorCallback, DataProviderSuccessCallback } from "./IDataProvider"
+import mongoose from "mongoose";
+import { IDataProvider, DataProviderQuery, DataProviderQueryType, ErrorInfo, ErrorCallback,
+    DataProviderSuccessCallback, DataProviderQueryField } from "./IDataProvider";
 import { Post } from "../models/post.model";
 import { PostModel, PostDocument } from "./models/postModel";
 
@@ -9,7 +10,7 @@ import { PostModel, PostDocument } from "./models/postModel";
 export class MongooseDataProvider implements IDataProvider {
 
     // The post model.
-    private _postModel: PostModel;
+    private postModel: PostModel;
 
     /**
      * Creates a new Mongoose DataProvider
@@ -17,7 +18,7 @@ export class MongooseDataProvider implements IDataProvider {
     public constructor() {
 
         // Setup schema
-        let postSchema = new mongoose.Schema(
+        const postSchema = new mongoose.Schema(
             {
                 title: { type: String, required: true },
                 content: { type: String, required: true },
@@ -34,12 +35,11 @@ export class MongooseDataProvider implements IDataProvider {
         } );
 
         // Create the mongoose model and save it off in the dictionary.
-        this._postModel = mongoose.model<PostDocument>( "post", postSchema );
+        this.postModel = mongoose.model<PostDocument>( "post", postSchema );
     }
 
     /**
      * Attempts to connect to the provided database.
-     * 
      * @param dsn The Data Source Name of the database (connection string)
      * @param onSuccess Callback made on success. Optional.
      * @param onError Callback made on error. Optional.
@@ -63,7 +63,6 @@ export class MongooseDataProvider implements IDataProvider {
 
     /**
      * Attempts to create the passed object in the data layer.
-     * 
      * @param object The object to be created/saved in the data layer.
      * @param onSuccess Callback made on success. Optional.
      * @param onError Callback made on error. Optional.
@@ -71,7 +70,7 @@ export class MongooseDataProvider implements IDataProvider {
     public async Create<T>( object: T, onSuccess?: DataProviderSuccessCallback<T>, onError?: ErrorCallback ): Promise<void> {
 
         if ( object instanceof Post ) {
-            ( await this._postModel.create( object ) ).save()
+            ( await this.postModel.create( object ) ).save()
                 .then( ( data: any ) => {
                     if ( onSuccess ) {
                         onSuccess( data as T );
@@ -87,17 +86,19 @@ export class MongooseDataProvider implements IDataProvider {
 
     /**
      * Attempts to read an object or objects from the data layer.
-     * 
      * @param query The query used for object selection.
      * @param onSuccess Callback made on success. Optional.
      * @param onError Callback made on error. Optional.
      */
-    public async Read<T>( query: DataProviderQuery<T>, onSuccess?: DataProviderSuccessCallback<T>, onError?: ErrorCallback ): Promise<void> {
+    public async Read<T>(
+        query: DataProviderQuery<T>,
+        onSuccess?: DataProviderSuccessCallback<T>,
+        onError?: ErrorCallback ): Promise<void> {
 
         switch ( query.Type ) {
             case DataProviderQueryType.FindAll: {
-                if ( query.Params["objType"] === "post" ) {
-                    await this._postModel.find( query.Params["condition"] )
+                if ( query.Params[DataProviderQueryField.ObjectType] === "post" ) {
+                    await this.postModel.find( query.Params[DataProviderQueryField.Condition] )
                         .then( ( data: any ) => {
                             if ( onSuccess ) {
                                 onSuccess( data as T );
@@ -118,9 +119,9 @@ export class MongooseDataProvider implements IDataProvider {
                 return;
             }
             case DataProviderQueryType.FindOne:
-                if ( query.Params["objType"] === "post" ) {
-                    let id = query.Params["id"];
-                    this._postModel.findById( query.Params["id"] )
+                if ( query.Params[DataProviderQueryField.ObjectType] === "post" ) {
+                    const id = query.Params[DataProviderQueryField.Id];
+                    this.postModel.findById( query.Params[DataProviderQueryField.Id] )
                         .then( ( data: any ) => {
                             if ( !data ) {
                                 if ( onError ) {
@@ -155,11 +156,11 @@ export class MongooseDataProvider implements IDataProvider {
      * @param onError Callback made on error. Optional.
      */
     public async Update<T>( query: any, onSuccess?: DataProviderSuccessCallback<T>, onError?: ErrorCallback ): Promise<void> {
-        if ( query.Params["objType"] === "post" ) {
-            let id = query.Params["id"];
-            let body = query.Params["body"];
+        if ( query.Params[DataProviderQueryField.ObjectType] === "post" ) {
+            const id = query.Params[DataProviderQueryField.Id];
+            const body = query.Params[DataProviderQueryField.Body];
 
-            this._postModel.findByIdAndUpdate( id, body, { useFindAndModify: false } )
+            this.postModel.findByIdAndUpdate( id, body, { useFindAndModify: false } )
                 .then( ( data: any ) => {
                     if ( !data ) {
                         if ( onError ) {
@@ -187,16 +188,15 @@ export class MongooseDataProvider implements IDataProvider {
 
     /**
      * Attempts to delete an object or objects from the data layer using the provided query.
-     * 
      * @param query The query used for object selection.
      * @param onSuccess Callback made on success. Optional.
      * @param onError Callback made on error. Optional.
      */
     public async Delete<T>( query: any, onSuccess?: DataProviderSuccessCallback<T>, onError?: ErrorCallback ): Promise<void> {
-        if ( query.Params["objType"] === "post" ) {
-            let id = query.Params["id"];
+        if ( query.Params[DataProviderQueryField.ObjectType] === "post" ) {
+            const id = query.Params[DataProviderQueryField.Id];
 
-            this._postModel.findByIdAndRemove( id )
+            this.postModel.findByIdAndRemove( id )
                 .then( ( data: any ) => {
                     if ( !data ) {
                         if ( onError ) {
